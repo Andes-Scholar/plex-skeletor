@@ -1,3 +1,4 @@
+
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -14,29 +15,31 @@ import { ConceptosTurneablesComponent } from './conceptos-tuneables/components/c
 import { DetalleConceptoTurneableComponent } from './conceptos-tuneables/components/detalle-concepto-turneable.component';
 import { ConceptoTruneableService } from './conceptos-tuneables/services/concepto-turneable.service';
 import { NuevoConceptoTurneableComponent } from './conceptos-tuneables/components/nuevo-concepto-turneable.component';
+import { MonitoreoActivacionesComponent } from './monitoreo-activaciones.component';
 
 @NgModule({
- declarations: [
-   AppComponent,
-   HomeComponent,
-   ConceptosTurneablesComponent,
-   DetalleConceptoTurneableComponent,
-   NuevoConceptoTurneableComponent
- ],
- imports: [
-   BrowserModule,
-   FormsModule,
-   HttpModule,
-   PlexModule,
-   routing
- ],
- providers: [
-   Plex,  
-   appRoutingProviders,
-   Server,
-   SnomedService,
-   ConceptoTruneableService,
- ],
- bootstrap: [AppComponent]
+  declarations: [
+    AppComponent,
+    HomeComponent,
+    ConceptosTurneablesComponent,
+    DetalleConceptoTurneableComponent,
+    NuevoConceptoTurneableComponent,
+    MonitoreoActivacionesComponent
+  ],
+  imports: [
+    BrowserModule,
+    FormsModule,
+    HttpModule,
+    PlexModule,
+    routing
+  ],
+  providers: [
+    Plex,
+    appRoutingProviders,
+    Server,
+    SnomedService,
+    ConceptoTruneableService,
+  ],
+  bootstrap: [AppComponent]
 })
 export class AppModule { }
