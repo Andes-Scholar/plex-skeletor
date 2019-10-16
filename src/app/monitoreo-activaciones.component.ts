@@ -1,43 +1,37 @@
+
+import { ISendMessageCache } from 'src/app/interfaces/ISendMessageCache';
+import { IPacienteApp } from './interfaces/IPacienteApp';
+import { PacienteAppService } from '../services/pacienteApp.service';
+import { SendMessageCacheService } from '../services/sendMessageCache.service';
 import { Component, OnInit } from '@angular/core';
 import { Plex } from '@andes/plex';
-import { Router } from '@angular/router';
+import { IDevice } from './interfaces/IDevice';
 
 @Component({
     selector: 'app-monitoreo-activaciones',
     templateUrl: './monitoreo-activaciones.component.html',
 })
 export class MonitoreoActivacionesComponent implements OnInit {
-    public disableNuevoPaciente = true;
     loading = false;
-    textoLibre = "";
+    documento: Number;
     resultadoBusqueda;
+    resultadoMensajes;
     pacienteSeleccionado = false;
     searchClear = true;    // True si el campo de búsqueda se encuentra vacío
     escaneado: boolean;
-    paciente = {
-        apellido: 'García',
-        nombre: 'Josefina',
-        sexo: 'femenino',
-        documento: '12548547',
-        fechaNacimiento: new Date(),
-        app_version: 'v2.0',
-        device: 'Samsung S10',
-    };
+    pacienteApp: IPacienteApp;
+    pacienteDevice: IDevice;
+    pacienteMensajes: [ISendMessageCache];
     private plex: Plex;
 
-    ngOnInit() {
-        this.plex.clearNavbar();
-        this.updateTitle('Buscar pacientes');
-        this.paciente = {
-            apellido: 'García',
-            nombre: 'Josefina',
-            sexo: 'femenino',
-            documento: '12548547',
-            fechaNacimiento: new Date(),
-            app_version: 'v2.0',
-            device: 'Samsung S10',
-        };
+
+    constructor(private pacienteAppService: PacienteAppService, private sendMessageCacheService: SendMessageCacheService) {
+
     }
+
+    ngOnInit() {
+    }
+
 
     onSearchStart() {
         this.loading = true;
@@ -53,33 +47,35 @@ export class MonitoreoActivacionesComponent implements OnInit {
     onSearchClear() {
         this.searchClear = true;
         this.resultadoBusqueda = [];
+        this.pacienteSeleccionado = false;
     }
 
-    private updateTitle(nombre: string) {
-        this.plex.updateTitle('ACTIVACIONES / ' + nombre);
-        this.plex.updateTitle([{
-            route: 'inicio',
-            name: 'INICIO'
-        }, {
-            name: nombre
-        }]);
-    }
-
-    simular() {
-        if (this.textoLibre && this.textoLibre.length > 0){
-            this.resultadoBusqueda = [];
-            this.resultadoBusqueda.push(this.paciente);
-        }
-        else {
-            this.resultadoBusqueda = [];
-        }
-    }
-
-    hoverPaciente(paciente){
+    hoverPaciente(paciente) {
 
     }
 
-    seleccionar(){
+    public loadPacientes() {
+        this.pacienteAppService.get(this.documento).subscribe(
+            datos => {
+                this.resultadoBusqueda = datos;
+
+            }
+        );
+
+    }
+
+    public loadMensajes(email: String) {
+        this.sendMessageCacheService.getByEmail(email).subscribe(
+            datos => {
+                this.resultadoMensajes = datos;
+            }
+        );
+    }
+
+    seleccionar() {
         this.pacienteSeleccionado = true;
+        this.pacienteApp = this.resultadoBusqueda[0];
+        this.pacienteDevice = this.pacienteApp.devices[0];
+        this.loadMensajes(this.pacienteApp.email);
     }
 }

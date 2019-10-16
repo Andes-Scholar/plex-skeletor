@@ -7,8 +7,15 @@ import { Server } from '@andes/shared';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
+
 export class AppComponent {
+<<<<<<< HEAD
+=======
+  title = 'PruebaFuego';
+
+>>>>>>> feat(monitoreo): Carga de datos de un paciente de la base a partir de la búsqueda por documento. Visualización de mensajes asociados al email en caso de que hayan.
   constructor(public server: Server) {
     server.setBaseURL(environment.API);
   }
 }
+

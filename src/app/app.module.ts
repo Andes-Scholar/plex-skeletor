@@ -16,6 +16,8 @@ import { DetalleConceptoTurneableComponent } from './conceptos-tuneables/compone
 import { ConceptoTruneableService } from './conceptos-tuneables/services/concepto-turneable.service';
 import { NuevoConceptoTurneableComponent } from './conceptos-tuneables/components/nuevo-concepto-turneable.component';
 import { MonitoreoActivacionesComponent } from './monitoreo-activaciones.component';
+import { PacienteAppService } from 'src/services/pacienteApp.service';
+import { SendMessageCacheService } from 'src/services/sendMessageCache.service';
 
 @NgModule({
   declarations: [
@@ -39,6 +41,8 @@ import { MonitoreoActivacionesComponent } from './monitoreo-activaciones.compone
     Server,
     SnomedService,
     ConceptoTruneableService,
+    PacienteAppService,
+    SendMessageCacheService
   ],
   bootstrap: [AppComponent]
 })
