@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { environment } from './../environments/environment';
+import { Server } from '@andes/shared';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'PruebaFuego';
+  constructor(public server: Server) {
+    server.setBaseURL(environment.API);
+  }
 }
