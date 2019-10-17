@@ -12,21 +12,18 @@ import { IDevice } from './interfaces/IDevice';
     templateUrl: './monitoreo-activaciones.component.html',
 })
 export class MonitoreoActivacionesComponent implements OnInit {
-    loading = false;
+    loader = false;
     documento: Number;
     resultadoBusqueda;
     resultadoMensajes;
-    pacienteSeleccionado = false;
-    searchClear = true;    // True si el campo de búsqueda se encuentra vacío
-    escaneado: boolean;
     pacienteApp: IPacienteApp;
     pacienteDevice: IDevice;
-    pacienteMensajes: [ISendMessageCache];
-    private plex: Plex;
+    pacienteSeleccionado = false;
+    searchClear = true;    // True si el campo de búsqueda se encuentra vacío
 
 
-    constructor(private pacienteAppService: PacienteAppService, private sendMessageCacheService: SendMessageCacheService) {
-
+    constructor(private pacienteAppService: PacienteAppService, private sendMessageCacheService: SendMessageCacheService, private plex: Plex) {
+        this.plex.updateTitle('ANDES | Monitoreo de Activaciones');
     }
 
     ngOnInit() {
@@ -34,48 +31,52 @@ export class MonitoreoActivacionesComponent implements OnInit {
 
 
     onSearchStart() {
-        this.loading = true;
+        this.loader = true;
     }
 
-    onSearchEnd(pacientes: any[], escaneado: boolean, busqueda: string) {
+    onSearchEnd(pacientes: any[]) {
         this.searchClear = false;
-        this.escaneado = escaneado;
-        this.loading = false;
+        this.loader = false;
         this.resultadoBusqueda = pacientes;
     }
 
     onSearchClear() {
         this.searchClear = true;
-        this.resultadoBusqueda = [];
-        this.pacienteSeleccionado = false;
-    }
-
-    hoverPaciente(paciente) {
-
+        this.resultadoBusqueda = null;
     }
 
     public loadPacientes() {
-        this.pacienteAppService.get(this.documento).subscribe(
-            datos => {
-                this.resultadoBusqueda = datos;
-
-            }
-        );
+        this.onSearchStart();
+        if (this.documento != null) {
+            this.pacienteAppService.get({ 'documento': this.documento }).subscribe(
+                datos => {
+                    this.onSearchEnd(datos);
+                }
+            );
+        } else {
+            this.onSearchEnd([]);
+        }
 
     }
 
     public loadMensajes(email: String) {
-        this.sendMessageCacheService.getByEmail(email).subscribe(
+        this.sendMessageCacheService.get({ 'email': email }).subscribe(
             datos => {
                 this.resultadoMensajes = datos;
             }
         );
     }
 
-    seleccionar() {
-        this.pacienteSeleccionado = true;
-        this.pacienteApp = this.resultadoBusqueda[0];
-        this.pacienteDevice = this.pacienteApp.devices[0];
-        this.loadMensajes(this.pacienteApp.email);
+    seleccionar(paciente) {
+        if (this.pacienteSeleccionado && this.pacienteApp == paciente) {
+            this.pacienteSeleccionado = false;
+            this.pacienteApp = null;
+            this.pacienteDevice = null;
+        } else {
+            this.pacienteSeleccionado = true;
+            this.pacienteApp = paciente;
+            this.pacienteDevice = this.pacienteApp.devices[0];
+            this.loadMensajes(this.pacienteApp.email);
+        }
     }
 }

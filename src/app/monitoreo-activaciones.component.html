@@ -2,13 +2,14 @@
     <plex-layout-main>
         <div class="row">
             <div class="col-12">
-                <plex-text (change)="loadPacientes()" [(ngModel)]="documento" name="buscador" placeholder="Escanee un documento digital, o escriba un documento / apellido / nombre">
+                <plex-text (change)="loadPacientes()" [(ngModel)]="documento" name="buscador" placeholder="Ingrese un documento">
                 </plex-text>
             </div>
         </div>
-
-        <plex-loader *ngIf="loading" type="ball-pulse"></plex-loader>
-
+        <plex-loader *ngIf="loader" type="ball-beat"></plex-loader>
+        <div *ngIf="!resultadoBusqueda?.length && !loader" class="alert alert-default">
+            <i class="mdi mdi-emoticon-sad"></i> No hay resultados que coincidan con los filtros de búsqueda
+        </div>
         <div class="row">
             <div class="col">
                 <table *ngIf="resultadoBusqueda && resultadoBusqueda.length" class="table table-striped table-hover">
@@ -21,7 +22,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr class="hover" *ngFor="let paciente of resultadoBusqueda" (click)="seleccionar()" (mouseenter)="hoverPaciente(paciente)">
+                        <tr class="hover" *ngFor="let paciente of resultadoBusqueda" (click)="seleccionar(paciente)">
 
                             <td class="text-center">
                                 <span *ngIf="paciente?.documento !== ''" class="d-block">{{paciente.documento}}</span>
@@ -38,9 +39,6 @@
                         </tr>
                     </tbody>
                 </table>
-                <div *ngIf="resultadoBusqueda && !resultadoBusqueda.length && !searchClear" class="alert alert-danger">
-                    <i class="mdi mdi-account-alert"></i> No se encontró ningún paciente..
-                </div>
 
             </div>
         </div>
@@ -128,10 +126,6 @@
                                     </tr>
                                 </tbody>
                             </table>
-                            <div *ngIf="resultadoBusqueda && !resultadoBusqueda.length && !searchClear" class="alert alert-danger">
-                                <i class="mdi mdi-account-alert"></i> No se encontró ningún paciente..
-                            </div>
-
                         </div>
                     </div>
                 </fieldset>

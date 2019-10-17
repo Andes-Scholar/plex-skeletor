@@ -10,9 +10,10 @@ export class PacienteAppService {
 
     constructor(private server: Server) { }
 
-    get(dni: Number): Observable<IPacienteApp[]> {
-        return this.server.get(this.pacienteAppUrl + '/' + dni, { showError: true });
+    get(params: any): Observable<IPacienteApp[]> {
+        return this.server.get(this.pacienteAppUrl, { params: params, showError: true });
     }
+
 
 }
 

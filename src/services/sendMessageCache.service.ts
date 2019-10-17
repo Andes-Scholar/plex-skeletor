@@ -6,17 +6,14 @@ import { Server } from '@andes/shared';
 @Injectable()
 export class SendMessageCacheService {
 
-    private sendMessageCacheUrl = '/modules/mobileApp/';  // URL to web api
+    private sendMessageCacheUrl = '/modules/mobileApp/sendMessageCache';  // URL to web api
 
     constructor(private server: Server) { }
 
-    getByEmail(email: String): Observable<ISendMessageCache[]> {
-        return this.server.get(this.sendMessageCacheUrl + '/sendMessageCacheByEmail/' + email, { showError: true });
+    get(params: any): Observable<ISendMessageCache[]> {
+        return this.server.get(this.sendMessageCacheUrl, { params: params, showError: true });
     }
 
-    getByPhone(phone: String): Observable<ISendMessageCache[]> {
-        return this.server.get(this.sendMessageCacheUrl + '/sendMessageCacheByPhone/' + phone, { showError: true });
-    }
 
 }
 
