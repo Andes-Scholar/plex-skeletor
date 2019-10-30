@@ -47,14 +47,15 @@ export class NuevoConceptoTurneableComponent implements OnInit {
         }
 
         this.conceptoSnomedSeleccionado = null;
-        let term = this.term && this.term.trim();
+        const term = this.term && this.term.trim();
 
         if (term) {
             this.loading = true;
             this.timeoutHandle = window.setTimeout(() => {
                 this.timeoutHandle = null;
-                let query = {
+                const query = {
                     search: this.term,
+                    semanticTag: ['procedimiento']
                 };
                 this.snomedService.get(query).subscribe((resultado: ISnomedConcept[]) => {
                     this.loading = false;
