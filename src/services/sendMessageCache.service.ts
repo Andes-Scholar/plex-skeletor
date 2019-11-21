@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ISendMessageCache } from 'src/app/interfaces/ISendMessageCache';
+import { ISendMessageCache } from 'src/app/monitoreo-activaciones/interfaces/ISendMessageCache';
 import { Server } from '@andes/shared';
 
 @Injectable()

@@ -1,8 +1,7 @@
 
-import { ISendMessageCache } from 'src/app/interfaces/ISendMessageCache';
 import { IPacienteApp } from './interfaces/IPacienteApp';
-import { PacienteAppService } from '../services/pacienteApp.service';
-import { SendMessageCacheService } from '../services/sendMessageCache.service';
+import { PacienteAppService } from '../../services/pacienteApp.service';
+import { SendMessageCacheService } from '../../services/sendMessageCache.service';
 import { Component, OnInit } from '@angular/core';
 import { Plex } from '@andes/plex';
 import { IDevice } from './interfaces/IDevice';

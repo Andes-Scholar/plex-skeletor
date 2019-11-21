@@ -1,4 +1,4 @@
-import { MonitoreoActivacionesComponent } from './monitoreo-activaciones.component';
+import { MonitoreoActivacionesComponent } from './monitoreo-activaciones/monitoreo-activaciones.component';
 import { Routes, RouterModule } from '@angular/router';
 import { ModuleWithProviders } from '@angular/core';
 import { HomeComponent } from './home/home.component';

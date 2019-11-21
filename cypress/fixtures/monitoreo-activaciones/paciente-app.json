@@ -1,0 +1,32 @@
+{
+    "updatedAt": "2017-11-13T23:40:41.975-03:00",
+    "createdAt": "2017-07-26T11:42:40.474-03:00",
+    "nombre": "PRUEBA",
+    "apellido": "MONITOREO",
+    "email": "prueba@monitoreo.com",
+    "password": "$2a$05$L/A3acqXUxX7wT3rgbA9wePUY0.dDG.jNnXEMD0GcxqQxuDaWPHR2",
+    "telefono": "2995111222",
+    "envioCodigoCount": 0,
+    "nacionalidad": "Argentina",
+    "documento": "11222333",
+    "fechaNacimiento": "1970-10-03T21:00:00.000-03:00",
+    "sexo": "Femenino",
+    "genero": "Femenino",
+    "codigoVerificacion": null,
+    "expirationTime": null,
+    "devices": [
+        {
+            "updatedAt": "2017-07-31T07:03:34.719-03:00",
+            "createdAt": "2017-07-31T07:03:34.719-03:00",
+            "_id": "597f00764fcc0064d26eb103",
+            "session_id": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU5N2YwMDc2NGZjYzAwNjRkMjZlYjEwMiIsInVzdWFyaW8iOnsibm9tYnJlIjoiQURFTEFJREEgQU5UT05JQSBBTUFMSUEgR09MRE1BTiBST1RBIiwiZW1haWwiOiJnb2xkbWFuYWRlbGFpZGFAZ21haWwuY29tIn0sInBlcm1pc29zIjpbXSwicGFjaWVudGVzIjpbeyJpZCI6IjU5Nzg5YzhjNzhjYjBlMDRjYTA5NGY5OCIsImFkZGVkQXQiOiIyMDE3LTA3LTI2VDE0OjQyOjQwLjUzNVoiLCJfaWQiOiI1OTc4YWE2MDM4YjU0YTE5NGZlZGJmNjUiLCJyZWxhY2lvbiI6InByaW5jaXBhbCJ9XSwib3JnYW5pemFjaW9uIjpudWxsLCJhY2NvdW50X2lkIjoiNTk3OGFhNjAzOGI1NGExOTRmZWRiZjY0IiwidHlwZSI6InBhY2llbnRlLXRva2VuIiwiaWF0IjoxNTAxNDk1NDE0LCJleHAiOjE1MDIzNTk0MTR9.tP-2-XON0LXZ6QL7GZxDPG6hP1Re3hWeU956fHcmdrA",
+            "app_version": 2,
+            "device_type": "Android 7.0",
+            "device_id": "d7yd99Lb-Bs:APA91bEWUgbITr5FUVHyen3B2l8Pn2eauomcu5F-1UIB3sYcXit7npo8nC8BzWp7u9DwDN-HFVT8JwB554XBptuEN0gD5ObTeIx4jyvPTwzVW0SySqkoG240KrbyXSjxEj5o-WctDx6T"
+        }
+    ],
+    "permisos": [],
+    "activacionApp": true,
+    "estadoCodigo": true,
+    "pacientes": []
+}

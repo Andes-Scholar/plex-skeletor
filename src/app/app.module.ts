@@ -15,7 +15,7 @@ import { ConceptosTurneablesComponent } from './conceptos-tuneables/components/c
 import { DetalleConceptoTurneableComponent } from './conceptos-tuneables/components/detalle-concepto-turneable.component';
 import { ConceptoTruneableService } from './conceptos-tuneables/services/concepto-turneable.service';
 import { NuevoConceptoTurneableComponent } from './conceptos-tuneables/components/nuevo-concepto-turneable.component';
-import { MonitoreoActivacionesComponent } from './monitoreo-activaciones.component';
+import { MonitoreoActivacionesComponent } from './monitoreo-activaciones/monitoreo-activaciones.component';
 import { PacienteAppService } from 'src/services/pacienteApp.service';
 import { SendMessageCacheService } from 'src/services/sendMessageCache.service';
 

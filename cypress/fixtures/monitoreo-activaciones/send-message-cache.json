@@ -1,0 +1,17 @@
+{
+    "message": "Estimado MONITOREO, PRUEBA2. Su código de activación para ANDES Mobile es: 350883",
+    "phone": null,
+    "email": "prueba2@monitoreo.com",
+    "template": "emails/active-app-code.html",
+    "extras": {
+        "codigo": "350883",
+        "username": "MONITOREO, PRUEBA2"
+    },
+    "subject": "ANDES :: Código de activación",
+    "from": "undefined",
+    "createdAt": "2017-10-18T13:07:25.650-03:00",
+    "updatedAt": "2017-10-18T13:10:30.007-03:00",
+    "scheduledAt": "2017-10-18T13:07:25.650-03:00",
+    "tries": 7,
+    "status": "error"
+}

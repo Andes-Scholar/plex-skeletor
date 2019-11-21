@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { IPacienteApp } from 'src/app/interfaces/IPacienteApp';
+import { IPacienteApp } from 'src/app/monitoreo-activaciones/interfaces/IPacienteApp';
 import { Server } from '@andes/shared';
 
 @Injectable()
