@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { Plex, PlexModule } from '@andes/plex';
 import { routing, appRoutingProviders } from './app-routing.module';
-import { SharedModule } from '@andes/shared';
+import { SharedModule, Server } from '@andes/shared';
 
 
 // Components
@@ -25,6 +25,7 @@ import { HomeComponent } from './home.component';
     routing
   ],
   providers: [
+    Server,
     Plex,
     appRoutingProviders
   ],
