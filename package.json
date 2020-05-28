@@ -12,7 +12,7 @@
   "private": true,
   "dependencies": {
     "@andes/auth": "^6.1.0",
-    "@andes/plex": "^6.3.0",
+    "@andes/plex": "github:andes/plex#layout-responsive",
     "@andes/shared": "^5.4.0",
     "@angular/animations": "~8.2.9",
     "@angular/cdk": "^8.2.2",
