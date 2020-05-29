@@ -1,0 +1,27 @@
+<plex-layout>
+    <plex-layout-main>
+        <header>
+            <plex-title titulo="Listado Prestaciones"></plex-title>
+            <plex-wrapper>
+                <plex-datetime label="Desde" type="date" skipBy="day" name="desde" [(ngModel)]="desde"></plex-datetime>
+                <plex-datetime label="Hasta" type="date" skipBy="day" name="hasta" [(ngModel)]="hasta"></plex-datetime>
+                <plex-text label="Paciente" name="paciente" [(ngModel)]="paciente"></plex-text>
+            </plex-wrapper>
+        </header>
+        <plex-list>
+            <plex-heading>
+                <b label>Fecha</b>
+                <b label>Tipo Prestacion</b>
+                <b label>Paciente</b>
+            </plex-heading>
+            <plex-item *ngFor="let prestacion of prestaciones">
+                <plex-label>{{ prestacion.solicitud.fecha | date }}</plex-label>
+                <plex-label>{{ prestacion.solicitud.tipoPrestacion.term }}</plex-label>
+                <plex-label>{{ prestacion.paciente | nombre }}</plex-label>
+                <plex-badge type="success">
+                    {{prestacion | estado}}
+                </plex-badge>
+            </plex-item>
+        </plex-list>
+    </plex-layout-main>
+</plex-layout>

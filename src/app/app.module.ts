@@ -10,11 +10,15 @@ import { SharedModule, Server } from '@andes/shared';
 // Components
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home.component';
+import { PrestacionesListComponent } from './prestaciones-list/prestaciones-list.component';
+import { EstadoPipe } from './pipes/estado.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    PrestacionesListComponent,
+    EstadoPipe
   ],
   imports: [
     BrowserModule,
