@@ -1,23 +1,38 @@
-import { Component, OnInit } from '@angular/core';
-import { PrestacionHTTP } from '../services/prestacion.http';
-import { IPrestacionResponse } from '../interfaces/prestacion.interface';
+import { Component } from '@angular/core';
+import { PrestacionesListService } from './prestaciones-list.service';
+
+
 
 @Component({
     selector: 'app-prestaciones-list',
-    templateUrl: 'prestaciones-list.component.html'
+    templateUrl: 'prestaciones-list.component.html',
+    providers: [PrestacionesListService]
 })
-export class PrestacionesListComponent implements OnInit {
-    public desde = new Date();
-    public hasta = new Date();
-    public paciente = '';
-    public prestaciones: IPrestacionResponse[] = [];
-    constructor(private prestacionHTTP: PrestacionHTTP) {
+export class PrestacionesListComponent {
+    public desde$ = this.prestacionesListService.desde.asObservable();
+    public hasta$ = this.prestacionesListService.hasta.asObservable();
+    public pacienteInputText$ = this.prestacionesListService.pacienteInputText.asObservable();
+
+    public prestacionesFiltradas$ = this.prestacionesListService.prestacionesFiltradas$;
+
+    constructor(private prestacionesListService: PrestacionesListService) {
 
     }
 
-    ngOnInit() {
-        this.prestacionHTTP.search({ limit: 50 }).subscribe((prestaciones) => {
-            this.prestaciones = prestaciones;
-        });
+
+
+    onChangeDesde($event) {
+        const { value } = $event;
+        this.prestacionesListService.setDesde(value);
+    }
+
+    onChangeHasta($event) {
+        const { value } = $event;
+        this.prestacionesListService.setHasta(value);
+    }
+
+    onChangePaciente($event) {
+        const { value } = $event;
+        this.prestacionesListService.setSearch(value);
     }
 }

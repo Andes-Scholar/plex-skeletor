@@ -6,7 +6,6 @@ import { IPrestacionResponse } from '../interfaces/prestacion.interface';
 export class EstadoPipe implements PipeTransform {
     transform(value: IPrestacionResponse): any {
         const lastEstate = value.estados[value.estados.length - 1].tipo;
-        console.log(lastEstate);
         return lastEstate;
     }
 }

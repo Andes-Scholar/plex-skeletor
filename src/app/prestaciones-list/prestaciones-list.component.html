@@ -1,11 +1,14 @@
-<plex-layout>
+<plex-layout main="8">
     <plex-layout-main>
         <header>
             <plex-title titulo="Listado Prestaciones"></plex-title>
             <plex-wrapper>
-                <plex-datetime label="Desde" type="date" skipBy="day" name="desde" [(ngModel)]="desde"></plex-datetime>
-                <plex-datetime label="Hasta" type="date" skipBy="day" name="hasta" [(ngModel)]="hasta"></plex-datetime>
-                <plex-text label="Paciente" name="paciente" [(ngModel)]="paciente"></plex-text>
+                <plex-datetime label="Desde" type="date" skipBy="day" name="desde" [ngModel]="desde$ | async"
+                               (change)="onChangeDesde($event)" [debounce]="500"></plex-datetime>
+                <plex-datetime label="Hasta" type="date" skipBy="day" name="hasta" [ngModel]="hasta$ | async"
+                               (change)="onChangeHasta($event)" [debounce]="500"></plex-datetime>
+                <plex-text label="Paciente" name="paciente" [ngModel]="pacienteInputText$ | async"
+                           (change)="onChangePaciente($event)"></plex-text>
             </plex-wrapper>
         </header>
         <plex-list>
@@ -14,7 +17,7 @@
                 <b label>Tipo Prestacion</b>
                 <b label>Paciente</b>
             </plex-heading>
-            <plex-item *ngFor="let prestacion of prestaciones">
+            <plex-item *ngFor="let prestacion of prestacionesFiltradas$ | async">
                 <plex-label>{{ prestacion.solicitud.fecha | date }}</plex-label>
                 <plex-label>{{ prestacion.solicitud.tipoPrestacion.term }}</plex-label>
                 <plex-label>{{ prestacion.paciente | nombre }}</plex-label>
@@ -24,4 +27,7 @@
             </plex-item>
         </plex-list>
     </plex-layout-main>
+    <plex-layout-sidebar>
+        <app-prestaciones-summary></app-prestaciones-summary>
+    </plex-layout-sidebar>
 </plex-layout>

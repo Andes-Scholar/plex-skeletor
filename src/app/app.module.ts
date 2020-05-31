@@ -12,12 +12,14 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home.component';
 import { PrestacionesListComponent } from './prestaciones-list/prestaciones-list.component';
 import { EstadoPipe } from './pipes/estado.pipe';
+import { PrestacionesSummaryComponent } from './prestaciones-list/prestaciones-summary/prestaciones-summary';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     PrestacionesListComponent,
+    PrestacionesSummaryComponent,
     EstadoPipe
   ],
   imports: [
